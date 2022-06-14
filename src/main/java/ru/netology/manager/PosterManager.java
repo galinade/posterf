@@ -39,7 +39,7 @@ public class PosterManager {
 
     public Poster[] findLast() {
         int resultLength = posters.length + 1;
-        if (resultLength > 10) {""
+        if (resultLength > 10) {
             resultLength = 9;
         } else {
             resultLength = resultLength - 1;

@@ -54,4 +54,19 @@ public class PosterManagerTest {
         Assertions.assertArrayEquals(expected, actual);
 
     }
+
+    @Test
+    void findLastLimit1() {
+
+        PosterManager cond = new PosterManager(3);
+        PosterManager manager = new PosterManager();
+        manager.save(mov1);
+        manager.save(mov2);
+        manager.save(mov3);
+
+        Poster[] actual = manager.findLast();
+        Poster[] expected = {mov3, mov2, mov1};
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
 }
