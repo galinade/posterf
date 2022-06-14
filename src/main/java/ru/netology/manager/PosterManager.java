@@ -1,96 +1,66 @@
 package ru.netology.manager;
 
+
 public class PosterManager {
-    private String[] movies;
 
-    public void setMovies(String[] movies) {
-        this.movies = movies;
-    }
 
-    private int currentLimit;
+    protected Poster[] posters = new Poster[0];
 
-    public int getCurrentLimit() {
-        return currentLimit;
-    }
-
-    public void setCurrentLimit(int currentLimit) {
-        this.currentLimit = currentLimit;
-    }
-
-    private int maxLimit = 10;
-    private int minLimit;
-
-    public void setMaxLimit(int maxLimit) {
-        this.maxLimit = maxLimit;
-    }
 
     public PosterManager(int limit) {
+        Poster[] posters = new Poster[limit];
+        this.posters = posters;
 
-        this.maxLimit = minLimit + limit - 1;
     }
-
 
     public PosterManager() {
+        //Poster[]posters = new Poster[10];
+        // this.posters=posters;
 
     }
 
-    public int getMaxLimit() {
-        return maxLimit;
-    }
 
-    public int getMinLimit() {
-        return minLimit;
-    }
+    public void save(Poster poster) {
+        int length = posters.length + 1;
+        Poster[] tmp = new Poster[length];
 
-    public static void posterManager(String[] args) {
-        String[] movies = {"Бладшот",
-                "Вперёд",
-                "Отель Белград",
-                "Джентльмены",
-                "Человек-невидимка",
-                "Тролли",
-                "Номер один",
-                "Восемь",
-                "Девять",
-                "Десять"
-
-        };
-
-        String newMovie = "Одиннадцать";
-
-        String[] movies1 = new String[movies.length + 1];
-        for (int i = 0; i < movies.length; i++) {
-            movies1[i] = movies[i];
+        for (int i = 0; i < posters.length; i++) {
+            tmp[i] = posters[i];
         }
-        movies1[movies1.length - 1] = newMovie;
-        movies = movies1;
+        int lastIndex = tmp.length - 1;
+        tmp[lastIndex] = poster;
+
+        posters = tmp;
     }
 
-
-    public String[] getMovies() {
-        return movies;
+    public Poster[] findAll() {
+        return posters;
     }
 
-    // public String[] getAll() {//
-    // return movies.findAll();//
-
-
-    public void setResultLength(int resultLength) {
-        if (resultLength > maxLimit) {
-            resultLength = currentLimit;
+    public Poster[] findLast() {
+        int resultLength = posters.length + 1;
+        if (resultLength > 10) {""
+            resultLength = 9;
         } else {
-            resultLength = maxLimit;
+            resultLength = resultLength - 1;
         }
-        String[] result = new String[resultLength];
-
-        for (int i = 0; i < resultLength; i++) {
-            currentLimit = resultLength - i - 1;
-            result[i] = result[currentLimit];
+        Poster[] result = new Poster[resultLength];
+        for (int i = 0; i < result.length; i++) {
+            int index = resultLength - i - 1;
+            result[i] = posters[index];
         }
-
-
+        return result;
+        // заполняем result из массива что лежит в поле
+        // в обратном порядке
     }
+
+
 }
+
+
+
+
+
 
 
 
