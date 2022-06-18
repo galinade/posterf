@@ -6,6 +6,16 @@ public class Poster {
     private String movie;
     private int resultLength;
 
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    protected int limit;
+
 
     public int getId() {
         return id;

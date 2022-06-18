@@ -40,9 +40,33 @@ public class PosterManagerTest {
     }
 
     @Test
+    void condTest() {
+
+        PosterManager cond= new PosterManager(10);
+
+        PosterManager manager = new PosterManager();
+        manager.save(mov1);
+        manager.save(mov2);
+        manager.save(mov3);
+        manager.save(mov4);
+        manager.save(mov5);
+        manager.save(mov6);
+        manager.save(mov7);
+        manager.save(mov8);
+        manager.save(mov9);
+        manager.save(mov10);
+        Poster[] actual = manager.findAll();
+        Poster[] expected = {mov1, mov2, mov3, mov4, mov5, mov6,mov7,mov8, mov9,mov10};
+        Assertions.assertArrayEquals(expected, actual);
+
+
+    }
+
+
+    @Test
     void findLastLimit() {
 
-        PosterManager cond = new PosterManager(5);
+        PosterManager cond = new PosterManager();
         PosterManager manager = new PosterManager();
         manager.save(mov1);
         manager.save(mov2);
@@ -69,4 +93,39 @@ public class PosterManagerTest {
         Assertions.assertArrayEquals(expected, actual);
 
     }
+
+    @Test
+    void findLastLimitMax() {
+
+        PosterManager cond = new PosterManager(2);
+        PosterManager manager = new PosterManager();
+        //manager.save(mov1);
+        //manager.save(mov2);
+        //manager.save(mov3);
+        //manager.save(mov4);
+        manager.save(mov5);
+        manager.save(mov6);
+
+        Poster[] actual = manager.findLast();
+        Poster[] expected = {mov6,mov5};
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    void findLastLimitMin() {
+
+        PosterManager cond = new PosterManager(6);
+        PosterManager manager = new PosterManager();
+        manager.save(mov1);
+        manager.save(mov2);
+        manager.save(mov3);
+        manager.save(mov4);
+        manager.save(mov5);
+        Poster[] actual = manager.findLast();
+        Poster[] expected = {mov5, mov4, mov3, mov2, mov1};
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
 }

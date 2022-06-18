@@ -5,17 +5,19 @@ public class PosterManager {
 
 
     protected Poster[] posters = new Poster[0];
+    private int maxLimit = 9;
+    private int minLimit;
+    private int currentLimit ;
 
 
     public PosterManager(int limit) {
         Poster[] posters = new Poster[limit];
-        this.posters = posters;
+        this.maxLimit = minLimit + limit ;
 
     }
 
     public PosterManager() {
-        //Poster[]posters = new Poster[10];
-        // this.posters=posters;
+
 
     }
 
@@ -37,13 +39,24 @@ public class PosterManager {
         return posters;
     }
 
+    public int getMaxLimit() {
+        return maxLimit;
+    }
+
+    public void setMaxLimit(int maxLimit) {
+        this.maxLimit = maxLimit;
+    }
+
     public Poster[] findLast() {
-        int resultLength = posters.length + 1;
-        if (resultLength > 10) {
-            resultLength = 9;
+        int resultLength= maxLimit;
+
+        if (posters.length>= maxLimit) {
+            resultLength = maxLimit;
         } else {
-            resultLength = resultLength - 1;
+            resultLength = posters.length;
+
         }
+
         Poster[] result = new Poster[resultLength];
         for (int i = 0; i < result.length; i++) {
             int index = resultLength - i - 1;
@@ -53,9 +66,11 @@ public class PosterManager {
         // заполняем result из массива что лежит в поле
         // в обратном порядке
     }
-
-
 }
+
+
+
+
 
 
 
