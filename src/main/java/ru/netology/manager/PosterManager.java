@@ -7,12 +7,12 @@ public class PosterManager {
     protected Poster[] posters = new Poster[0];
     private int maxLimit = 9;
     private int minLimit;
-    private int currentLimit ;
+    private int resultLength;
 
 
-    public PosterManager(int limit) {
-        Poster[] posters = new Poster[limit];
-        this.maxLimit = minLimit + limit ;
+    public PosterManager(int resultLength) {
+        //Poster[] posters = new Poster[limit];
+        this.maxLimit = minLimit + resultLength;
 
     }
 
@@ -47,13 +47,21 @@ public class PosterManager {
         this.maxLimit = maxLimit;
     }
 
-    public Poster[] findLast() {
-        int resultLength= maxLimit;
+    public int getResultLength() {
+        return resultLength;
+    }
 
-        if (posters.length>= maxLimit) {
-            resultLength = maxLimit;
-        } else {
+    public void setResultLength(int resultLength) {
+        this.resultLength = resultLength;
+    }
+
+    public Poster[] findLast() {
+
+
+        if (resultLength < posters.length) {
             resultLength = posters.length;
+        } else {
+            resultLength = resultLength;
 
         }
 

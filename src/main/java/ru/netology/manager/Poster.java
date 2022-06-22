@@ -55,10 +55,6 @@ public class Poster {
     }
 
 
-    // public void setPosters(Poster[] posters) {
-    //     this.posters = posters;
-    //  }
-
     public int getResultLength() {
         return resultLength;
     }

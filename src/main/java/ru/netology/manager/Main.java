@@ -2,7 +2,7 @@ package ru.netology.manager;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public void main(String[] args) {
         PosterManager manager = new PosterManager();
         manager.save(new Poster(1, "Бладшот"));
         manager.save(new Poster(2, "Вперёд"));
